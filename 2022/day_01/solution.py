@@ -48,22 +48,22 @@ Solution: 67016
 input_file = "input.txt"
 
 def get_max_total_calories(input_file):
-	f = open(input_file, "r")
-	line = f.readline()
+    f = open(input_file, "r")
+    line = f.readline()
 
-	curr_calories, max_calories = 0, 0
-	while (line):
-		if line.strip() == "":
-			if curr_calories > max_calories:
-				max_calories = curr_calories
-			curr_calories = 0
-		else:
-			curr_calories += int(line)
-		line = f.readline()
-	if curr_calories > max_calories:
-		max_calories = curr_calories
-	f.close()
-	return max_calories
+    curr_calories, max_calories = 0, 0
+    while (line):
+        if line.strip() == "":
+            if curr_calories > max_calories:
+                max_calories = curr_calories
+            curr_calories = 0
+        else:
+            curr_calories += int(line)
+        line = f.readline()
+    if curr_calories > max_calories:
+        max_calories = curr_calories
+    f.close()
+    return max_calories
 
 print("Max total calories: {}".format(get_max_total_calories(input_file)))
 
@@ -86,26 +86,26 @@ Elves carrying in total?
 Solution: 200116
 """
 def save_top_n_calories(heap, n, calories):
-	if (len(heap) < n):
-		heap.append(calories)
-	elif (calories > heap[0]):
-		heapq.heappushpop(heap, calories)
+    if (len(heap) < n):
+        heap.append(calories)
+    elif (calories > heap[0]):
+        heapq.heappushpop(heap, calories)
 
 def get_top_n_calories(input_file, n):
-	f = open(input_file, "r")
-	line = f.readline()
+    f = open(input_file, "r")
+    line = f.readline()
 
-	curr_calories, top_n_calories = 0, []
-	heapq.heapify(top_n_calories)
-	while line:
-		if line.strip() == "":
-			save_top_n_calories(top_n_calories, n, curr_calories)
-			curr_calories = 0
-		else:
-			curr_calories += int(line)
-		line = f.readline()
-	f.close()
-	save_top_n_calories(top_n_calories, n, curr_calories)
-	return sum(top_n_calories)
+    curr_calories, top_n_calories = 0, []
+    heapq.heapify(top_n_calories)
+    while line:
+        if line.strip() == "":
+            save_top_n_calories(top_n_calories, n, curr_calories)
+            curr_calories = 0
+        else:
+            curr_calories += int(line)
+        line = f.readline()
+    f.close()
+    save_top_n_calories(top_n_calories, n, curr_calories)
+    return sum(top_n_calories)
 
 print("Total Calories for Top 3 Elves: {}".format(get_top_n_calories(input_file, 3)))
