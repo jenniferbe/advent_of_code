@@ -44,7 +44,7 @@ case, your subroutine should report the value 7, because the first start-of-pack
 marker is complete after 7 characters have been processed.
 
 Here are a few more examples:
-	-2345
+    -2345
     bvwbjplbgvbhsrlpgdmjqwftvncz: first marker after character 5
     --3456
     nppdvjthqldpwncqszvftbrmjlhg: first marker after character 6
@@ -61,21 +61,21 @@ Solution: 1300
 input_file = "input.txt"
 
 def get_position(s, marker_size):
-	marker_letters = set()
+    marker_letters = set()
 
-	i, j = 0, 1
-	for i in range(4, len(s)):
-		if len(set(s[i-marker_size:i])) == marker_size:
-			return i
+    i, j = 0, 1
+    for i in range(4, len(s)):
+        if len(set(s[i-marker_size:i])) == marker_size:
+            return i
 
 def get_first_marker_position(input_file, marker_size):
-	f = open(input_file, "r")
-	line = f.readline().strip()
-	while (line):
-		print(line, get_position(line, marker_size))
-		line = f.readline().strip()
-	f.close()
-	return
+    f = open(input_file, "r")
+    line = f.readline().strip()
+    while (line):
+        print(line, get_position(line, marker_size))
+        line = f.readline().strip()
+    f.close()
+    return
 
 print("First marker positions:")
 get_first_marker_position(input_file, 4)
